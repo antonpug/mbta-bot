@@ -6,7 +6,10 @@ const app = new App({
 });
 
 app.message('knock knock', ({ message, say }) => {
-    say(`_Who's there?_`);
+    var evtSource = new EventSource("//api-v3.mbta.com/predictions/", { withCredentials: true } );
+    evtSource.onmessage = function(e) {
+        say(e.data);
+      }
   });
 
 
