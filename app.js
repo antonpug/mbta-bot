@@ -1,4 +1,5 @@
 const { App } = require('@slack/bolt');
+var EventSource = require("eventsource");
 
 const app = new App({
     token: process.env.SLACK_BOT_TOKEN,

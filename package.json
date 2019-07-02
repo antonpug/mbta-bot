@@ -9,6 +9,7 @@
   "author": "Anton Pugachevsky",
   "license": "MIT",
   "dependencies": {
-    "@slack/bolt": "^1.2.0"
+    "@slack/bolt": "^1.2.0",
+    "eventsource": "^1.0.7"
   }
 }
