@@ -6,10 +6,11 @@ const app = new App({
 });
 
 
-app.use(mbtaObserver);
+
 
 (async () => {
     await app.start(process.env.PORT || 3005);
+    app.use(mbtaObserver);
     console.log('MBTABot is running!');
 })();
 
