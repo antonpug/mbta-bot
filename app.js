@@ -5,12 +5,13 @@ const app = new App({
     signingSecret: process.env.SLACK_SIGNING_SECRET
 });
 
-
+app.message('knock knock', ({ message, say }) => {
+    say(`_Who's there?_`);
+  });
 
 
 (async () => {
     await app.start(process.env.PORT || 3005);
-    app.use(mbtaObserver);
     console.log('MBTABot is running!');
 })();
 
