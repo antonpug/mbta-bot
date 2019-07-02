@@ -11,7 +11,10 @@ app.message('knock knock', ({ message, say }) => {
     var evtSource = new EventSource("//api-v3.mbta.com/predictions/", eventSourceInitDict);
     evtSource.onmessage = function(e) {
         say(e.data);
-      }
+      };
+      evtSource.onerror = function (err) {
+        say(err);
+      };
   });
 
 
