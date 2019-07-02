@@ -8,7 +8,7 @@ const app = new App({
 
 app.message('knock knock', ({ message, say }) => {
     var eventSourceInitDict = {headers: {'accept': 'text/event-stream', 'x-api-key': '77908788c1bc4fbbacb489f5bc7907cf'}};
-    var evtSource = new EventSource("https://api-v3.mbta.com/predictions?filter%5Bstop%5D=place-sstat&filter%5Bdirection_id%5D=0&include=stop", eventSourceInitDict);
+    var evtSource = new EventSource("https://api-v3.mbta.com/predictions/?filter\\[route\\]=Red&filter\\[stop\\]=place-sstat&stop_sequence=1", eventSourceInitDict);
     evtSource.onmessage = function(e) {
         say(e.data.toString());
       };
