@@ -22,6 +22,15 @@ app.message('knock knock', ({ message, say }) => {
 (async () => {
     await app.start(process.env.PORT || 3005);
     console.log('MBTABot is running!');
+    var eventSourceInitDict = {headers: {'accept': 'text/event-stream', 'x-api-key': '77908788c1bc4fbbacb489f5bc7907cf'}};
+    var evtSource = new EventSource("https://api-v3.mbta.com/predictions/?filter\\[stop\\]=place-sstat&stop_sequence=1", eventSourceInitDict);
+    console.log('registered');''
+    evtSource.addEventListener('message', function(e) {
+        console.log(e.data);
+      }, false);
+    evtSource.onerror = function (err) {
+        console.log(err);
+      };
 })();
 
 function mbtaObserver() {
