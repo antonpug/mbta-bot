@@ -8,6 +8,7 @@ const app = new App({
 
 app.message('knock knock', ({ message, say }) => {
     var evtSource = new EventSource("//api-v3.mbta.com/predictions/", { withCredentials: true } );
+    say(evtSource);
     evtSource.onmessage = function(e) {
         say(e.data);
       }
