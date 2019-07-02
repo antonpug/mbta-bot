@@ -1,0 +1,14 @@
+{
+  "name": "mbtabot",
+  "version": "1.0.0",
+  "description": "MBTA Slack bot.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anton Pugachevsky",
+  "license": "MIT",
+  "dependencies": {
+    "@slack/bolt": "^1.2.0"
+  }
+}
