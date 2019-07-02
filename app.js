@@ -13,7 +13,9 @@ app.message('knock knock', ({ message, say }) => {
         say(e.data);
       };
       evtSource.onerror = function (err) {
-        say(err);
+        err.forEach(item => {
+            say(item.toString());
+        });
       };
   });
 
