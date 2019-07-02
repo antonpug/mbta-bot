@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "@slack/bolt": "^1.2.0",
+    "event-source-stream": "^1.6.0",
     "eventsource": "^1.0.7"
   }
 }

@@ -1,5 +1,6 @@
 const { App } = require('@slack/bolt');
 var EventSource = require("eventsource");
+var ess = require('event-source-stream');
 
 const app = new App({
     token: process.env.SLACK_BOT_TOKEN,
@@ -23,17 +24,10 @@ app.message('knock knock', ({ message, say }) => {
     await app.start(process.env.PORT || 3005);
     console.log('MBTABot is running!');
     var eventSourceInitDict = {headers: {'accept': 'text/event-stream', 'x-api-key': '77908788c1bc4fbbacb489f5bc7907cf'}};
-    var evtSource = new EventSource("https://api-v3.mbta.com/alerts", eventSourceInitDict);
-    console.log('registered', evtSource.readyState.toString());
-    evtSource.addEventListener('open', function(e) {
-        console.log('open', evtSource.readyState.toString());
-      }, false);
-    evtSource.addEventListener('message', function(e) {
-        console.log('message');
-      }, false);
-    evtSource.onerror = function (err) {
-        console.log(err);
-      };
+    ess("https://api-v3.mbta.com/alerts", eventSourceInitDict)
+  .on('data', function(data) {
+    console.log('received event:', data)
+  })
 })();
 
 function mbtaObserver() {
