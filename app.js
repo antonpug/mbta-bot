@@ -9,8 +9,8 @@ const app = new App({
 app.message('knock knock', ({ message, say }) => {
     var eventSourceInitDict = {headers: {'accept': 'text/event-stream', 'x-api-key': '77908788c1bc4fbbacb489f5bc7907cf'}};
     var evtSource = new EventSource("https://api-v3.mbta.com/alerts", eventSourceInitDict);
-    evtSource.onmessage = function(e) {
-        console.log(e.data.attributes.header);
+    evtSource.onmessage = function(e, data) {
+        console.log(data.attributes.header);
         say('Hello!');
         say(e.data.attributes.header);
       };
