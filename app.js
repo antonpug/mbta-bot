@@ -16,7 +16,9 @@ const app = new App({
 
 function mbtaObserver() {
     // Reverse all messages the app can hear
-    app.message(({ message, say }) => {
-        say('Helloooooo');
-    });
+    await app.client.chat.postMessage({
+        token: context.botToken,
+        channel: 'CKVBG7NHX',
+        text: `Welcome to the team!`
+      });
 }
