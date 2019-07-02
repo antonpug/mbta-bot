@@ -7,8 +7,8 @@ const app = new App({
 });
 
 app.message('knock knock', ({ message, say }) => {
-    var evtSource = new EventSource("//api-v3.mbta.com/predictions/", { withCredentials: true } );
-    say(evtSource.toString());
+    var eventSourceInitDict = {headers: {'accept': 'text/event-stream', 'x-api-key': '77908788c1bc4fbbacb489f5bc7907cf'}};
+    var evtSource = new EventSource("//api-v3.mbta.com/predictions/", eventSourceInitDict);
     evtSource.onmessage = function(e) {
         say(e.data);
       }
