@@ -26,7 +26,7 @@ app.message('knock knock', ({ message, say }) => {
     var evtSource = new EventSource("https://api-v3.mbta.com/predictions/?filter\\[stop\\]=place-sstat&stop_sequence=1", eventSourceInitDict);
     console.log('registered', evtSource.toString());
     evtSource.addEventListener('open', function(e) {
-        console.log(open);
+        console.log("open");
       }, false);
     evtSource.onerror = function (err) {
         console.log(err);
