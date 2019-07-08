@@ -37,7 +37,7 @@ app.message('knock knock', ({ message, say }) => {
 function mbtaObserver(text) {
   // Reverse all messages the app can hear
   app.client.chat.postMessage({
-    token: context.botToken,
+    token: 'xoxb-683885479590-681290178676-U4ETGWDlxwGQAuDAycUeyetJ',
     channel: 'CKVBG7NHX',
     text
   });
