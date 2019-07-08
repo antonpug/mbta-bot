@@ -28,6 +28,7 @@ app.message('knock knock', ({ message, say }) => {
   var es = new EventSource('https://api-v3.mbta.com/alerts', eventSourceInitDict);
   const updateHandler = function (event) {
     const data = JSON.parse(event.data);
+    console.log(data);
     if(data && data.attributes && data.attributes.header)
     {
       console.log(event.data.attributes.header);
