@@ -1,5 +1,5 @@
 const { App } = require('@slack/bolt');
-var ess = require('event-source-stream');
+var ess = require('eventsource');
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -18,10 +18,11 @@ app.message('knock knock', ({ message, say }) => {
     console.log(err);
   };*/
   var eventSourceInitDict = { headers: { 'accept': 'text/event-stream', 'x-api-key': '77908788c1bc4fbbacb489f5bc7907cf' } };
-  ess('https://api-v3.mbta.com/alerts', eventSourceInitDict).on('data', data => {
-      console.log('received event:', data);
-  });
-  console.log("test");
+  var es = ess('https://api-v3.mbta.com/alerts', eventSourceInitDict);
+  es.onerror = function (err) {
+    console.log('ERROR ', err);
+  };
+  
 });
 
 
