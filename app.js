@@ -27,16 +27,16 @@ app.message('knock knock', ({ message, say }) => {
   var eventSourceInitDict = { headers: { 'accept': 'text/event-stream', 'x-api-key': '77908788c1bc4fbbacb489f5bc7907cf' } };
   var es = new EventSource('https://api-v3.mbta.com/alerts', eventSourceInitDict);
   const updateHandler = function (event) {
-    console.log('data ', event.data);
+    mbtaObserver(event.data.attributes.header);
   };
   es.addEventListener('update', updateHandler);
 })();
 
-function mbtaObserver() {
+function mbtaObserver(text) {
   // Reverse all messages the app can hear
   app.client.chat.postMessage({
     token: context.botToken,
     channel: 'CKVBG7NHX',
-    text: `Welcome to the team!`
+    text
   });
 }
