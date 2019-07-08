@@ -29,6 +29,7 @@ app.message('knock knock', ({ message, say }) => {
   const updateHandler = function (event) {
     if(event && event.data && event.data.attributes && event.data.attributes.header)
     {
+      console.log(event.data.attributes.header);
       mbtaObserver(event.data.attributes.header);
     }
   };
