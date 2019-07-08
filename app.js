@@ -17,11 +17,6 @@ app.message('knock knock', ({ message, say }) => {
   evtSource.onerror = function (err) {
     console.log(err);
   };*/
-  var eventSourceInitDict = { headers: { 'accept': 'text/event-stream', 'x-api-key': '77908788c1bc4fbbacb489f5bc7907cf' } };
-  var es = new EventSource('https://api-v3.mbta.com/alerts', eventSourceInitDict);
-  es.onmessage = function (data) {
-    console.log('data ', data);
-  };
   
 });
 
@@ -29,6 +24,12 @@ app.message('knock knock', ({ message, say }) => {
 (async () => {
   await app.start(process.env.PORT || 3005);
   console.log('MBTABot is running!');
+  var eventSourceInitDict = { headers: { 'accept': 'text/event-stream', 'x-api-key': '77908788c1bc4fbbacb489f5bc7907cf' } };
+  var es = new EventSource('https://api-v3.mbta.com/alerts', eventSourceInitDict);
+  const updateHandler = function (event) {
+    console.log('data ', event.data);
+  };
+  es.addEventListener('update', updateHandler);
 })();
 
 function mbtaObserver() {
