@@ -39,6 +39,6 @@ function mbtaObserver(text) {
   app.client.chat.postMessage({
     token: 'xoxb-683885479590-681290178676-U4ETGWDlxwGQAuDAycUeyetJ',
     channel: 'CKVBG7NHX',
-    text
+    text: 'herrrro'
   });
 }
