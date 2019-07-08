@@ -27,6 +27,7 @@ app.message('knock knock', ({ message, say }) => {
   ess('https://api-v3.mbta.com/alerts', eventSourceInitDict).on('data', data => {
       console.log('received event:', data);
   });
+  console.log("test");
 })();
 
 function mbtaObserver() {
