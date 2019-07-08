@@ -24,7 +24,7 @@ app.message('knock knock', ({ message, say }) => {
   console.log('MBTABot is running!');
   var ess = require('event-source-stream');
   var eventSourceInitDict = { headers: { 'accept': 'text/event-stream', 'x-api-key': '77908788c1bc4fbbacb489f5bc7907cf' } };
-  ess('https://api-v3.mbta.com/alerts/', eventSourceInitDict).on('data', data => {
+  ess('https://api-v3.mbta.com/alerts', eventSourceInitDict).on('data', data => {
       console.log('received event:', data);
   });
 })();
