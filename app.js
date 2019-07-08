@@ -27,7 +27,10 @@ app.message('knock knock', ({ message, say }) => {
   var eventSourceInitDict = { headers: { 'accept': 'text/event-stream', 'x-api-key': '77908788c1bc4fbbacb489f5bc7907cf' } };
   var es = new EventSource('https://api-v3.mbta.com/alerts', eventSourceInitDict);
   const updateHandler = function (event) {
-    mbtaObserver(event.data.attributes.header);
+    if(event && event.data && event.data.attributes && event.data.attributes.header)
+    {
+      mbtaObserver(event.data.attributes.header);
+    }
   };
   es.addEventListener('update', updateHandler);
 })();
