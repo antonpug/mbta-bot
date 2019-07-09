@@ -29,7 +29,7 @@ app.message('knock knock', ({ message, say }) => {
   const updateHandler = function (event) {
     const alert = JSON.parse(event.data).attributes.header;
     console.log(alert);
-    //mbtaObserver(alert);
+    mbtaObserver(alert);
   };
   es.addEventListener('update', updateHandler);
 })();
@@ -37,7 +37,7 @@ app.message('knock knock', ({ message, say }) => {
 function mbtaObserver(text) {
   // Reverse all messages the app can hear
   app.client.chat.postMessage({
-    token: 'xoxb-683885479590-681290178676-U4ETGWDlxwGQAuDAycUeyetJ',
+    token: process.env.SLACK_BOT_TOKEN,
     channel: 'CKVBG7NHX',
     text: 'herrrro'
   });
