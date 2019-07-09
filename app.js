@@ -39,6 +39,6 @@ function mbtaObserver(text) {
   app.client.chat.postMessage({
     token: process.env.SLACK_BOT_TOKEN,
     channel: 'CKVBG7NHX',
-    text: 'herrrro'
+    text
   });
 }
