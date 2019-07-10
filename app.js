@@ -38,7 +38,7 @@ function processAlert(text) {
   if (text.includes('delay')) {
     app.client.chat.postMessage({
       token: process.env.SLACK_BOT_TOKEN,
-      channel: 'CKVBG7NHX',
+      channel: 'CKQA0PF51',
       text
     });
   }
