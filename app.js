@@ -17,7 +17,7 @@ app.message('knock knock', ({ message, say }) => {
   evtSource.onerror = function (err) {
     console.log(err);
   };*/
-  
+
 });
 
 
@@ -25,20 +25,21 @@ app.message('knock knock', ({ message, say }) => {
   await app.start(process.env.PORT || 3005);
   console.log('MBTABot is running!');
   var eventSourceInitDict = { headers: { 'accept': 'text/event-stream', 'x-api-key': '77908788c1bc4fbbacb489f5bc7907cf' } };
-  var es = new EventSource('https://api-v3.mbta.com/alerts/?filter[route_type]=0,1,2', eventSourceInitDict);
+  var es = new EventSource('https://api-v3.mbta.com/alerts/?filter[route_type]=0,1,2,3', eventSourceInitDict);
   const updateHandler = function (event) {
     const alert = JSON.parse(event.data).attributes.header;
     console.log(alert);
-    mbtaObserver(alert);
+    processAlert(alert);
   };
   es.addEventListener('update', updateHandler);
 })();
 
-function mbtaObserver(text) {
-  // Reverse all messages the app can hear
-  app.client.chat.postMessage({
-    token: process.env.SLACK_BOT_TOKEN,
-    channel: 'CKVBG7NHX',
-    text
-  });
+function processAlert(text) {
+  if (text.includes('delay')) {
+    app.client.chat.postMessage({
+      token: process.env.SLACK_BOT_TOKEN,
+      channel: 'CKVBG7NHX',
+      text
+    });
+  }
 }
