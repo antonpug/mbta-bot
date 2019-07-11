@@ -15,6 +15,7 @@ const app = new App({
   es.addEventListener('update', updateHandler);
 })();
 
+//this is a bit rigit right now, could be made more flexible if this were to be published.
 function updateHandler(event) {
   const alert = JSON.parse(event.data).attributes.header;
   console.log(alert);
