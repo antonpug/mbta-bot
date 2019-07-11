@@ -35,7 +35,7 @@ app.message('knock knock', ({ message, say }) => {
 })();
 
 function processAlert(text) {
-  if (text.includes('delay')) {
+  if (text.includes('delay') || text.includes('behind')) {
     app.client.chat.postMessage({
       token: process.env.SLACK_BOT_TOKEN,
       channel: 'CKQA0PF51',
