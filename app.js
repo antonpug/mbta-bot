@@ -15,14 +15,14 @@ const app = new App({
   es.addEventListener('update', updateHandler);
 })();
 
-  function updateHandler(event) {
-    const alert = JSON.parse(event.data).attributes.header;
-    console.log(alert);
-    if (alert.includes('delay') || alert.includes('behind')) {
-      app.client.chat.postMessage({
-        token: process.env.SLACK_BOT_TOKEN,
-        channel: 'CKQA0PF51',
-        text: alert
-      });
-    }
+function updateHandler(event) {
+  const alert = JSON.parse(event.data).attributes.header;
+  console.log(alert);
+  if (alert.includes('delay') || alert.includes('behind')) {
+    app.client.chat.postMessage({
+      token: process.env.SLACK_BOT_TOKEN,
+      channel: 'CKQA0PF51',
+      text: alert
+    });
   }
+}
